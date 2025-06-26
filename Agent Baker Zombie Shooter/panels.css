@@ -1,0 +1,51 @@
+.upgrade-summary-panel {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #555;
+    border-radius: 10px;
+    padding: 15px;
+    width: 280px;
+    max-height: calc(100vh - 200px); /* Avoid top and bottom UI */
+    overflow-y: auto;
+    pointer-events: auto;
+    z-index: 19; /* Below pause menu */
+}
+
+.upgrade-summary-panel.hidden {
+    display: none;
+}
+
+.upgrade-summary-panel h3 {
+    text-align: center;
+    color: #ffdd44;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+#upgradeSummaryList {
+    list-style: none;
+}
+
+#upgradeSummaryList li {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 5px;
+    border-left: 3px solid #ffdd44;
+}
+
+#upgradeSummaryList li .upgrade-name {
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+#upgradeSummaryList li .upgrade-details {
+    color: #ccc;
+    font-size: 12px;
+}

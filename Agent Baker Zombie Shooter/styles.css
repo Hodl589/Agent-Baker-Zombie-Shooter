@@ -1,0 +1,6 @@
+/* ALL STYLES HAVE BEEN MOVED TO SEPARATE FILES FOR BETTER ORGANIZATION. */
+/* base.css:       Contains global styles, fonts, and basic layout. */
+/* main-ui.css:    Contains styles for the main game UI (health/XP bars, abilities, etc.). */
+/* popups.css:     Contains styles for all modal dialogs (powerups, shop, pause, death screen). */
+/* panels.css:     Contains styles for side panels like the upgrade summary. */
+/* vhs.css:        Contains all styles related to the VHS filter visual override. */

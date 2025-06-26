@@ -1,0 +1,356 @@
+/* --- Top UI --- */
+.top-ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.health-bar, .xp-bar {
+    position: relative;
+    width: 300px;
+    height: 35px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid #555;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.health-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff4444, #ff6666);
+    transition: width 0.3s ease;
+    width: 100%;
+}
+
+.xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4444ff, #6666ff);
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.health-text, .xp-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.stats {
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.stats div {
+    margin-bottom: 5px;
+}
+
+/* --- Bottom UI --- */
+.bottom-left-ui, .bottom-center-ui, .bottom-right-ui {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    pointer-events: none;
+}
+.bottom-left-ui {
+    left: 20px;
+}
+.bottom-center-ui {
+    left: 50%;
+    transform: translateX(-50%);
+}
+.bottom-right-ui {
+    right: 20px;
+}
+
+.controls-hint {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 14px;
+    color: #bbb;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.grenade-ui {
+    display: flex;
+    gap: 10px;
+    pointer-events: none;
+}
+
+.grenade-icon {
+    width: 60px;
+    height: 60px;
+    background-image: url('grenade_ui.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.grenade-icon.used {
+    filter: grayscale(100%) opacity(0.4);
+}
+
+.grenade-icon.available::before {
+    box-shadow: 
+        inset 16px 0 0 -14px #6a8a6a,
+        inset 0 16px 0 -14px #6a8a6a,
+        inset -16px 0 0 -14px #6a8a6a,
+        inset 0 -16px 0 -14px #6a8a6a,
+        inset 12px 12px 0 -10px #6a8a6a,
+        inset -12px 12px 0 -10px #6a8a6a,
+        inset 12px -12px 0 -10px #6a8a6a,
+        inset -12px -12px 0 -10px #6a8a6a,
+        0 0 10px rgba(106, 138, 106, 0.3);
+}
+
+.ability-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.ability-display.hidden {
+    display: none;
+}
+
+.ability-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #222;
+    border: 2px solid #88f;
+    border-radius: 50%; 
+    position: relative;
+    overflow: hidden; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/ui_atlas.png');
+    background-size: 300px 180px; 
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 0 10px rgba(136, 136, 255, 0.5);
+}
+
+.ability-icon.on-cooldown {
+    filter: grayscale(1);
+    box-shadow: none;
+}
+
+.cooldown-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%; 
+    background-color: rgba(100, 100, 255, 0.7);
+    transition: height 0.1s linear;
+}
+
+.ability-key {
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#timeStopIcon {
+    background-position: 0 0;
+}
+
+#bulletTimeIcon {
+    background-position: -60px 0;
+    border-color: #aaa;
+    box-shadow: 0 0 10px rgba(220, 220, 220, 0.5);
+}
+
+#dashIcon {
+    background-position: -120px 0;
+    border-color: #aaa;
+    box-shadow: 0 0 10px rgba(220, 220, 220, 0.5);
+}
+
+#shieldIcon {
+    background-position: -180px 0;
+    border-color: #8af;
+    box-shadow: 0 0 10px rgba(136, 170, 255, 0.5);
+}
+
+.shield-count {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-shadow: none;
+}
+
+#finalStandIcon {
+    background-position: -240px 0;
+    border-color: #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+/* --- Debug Overlay --- */
+.debug-overlay {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    background: rgba(0,0,0,0.7);
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #0f0;
+    font-family: monospace;
+    z-index: 100;
+}
+.debug-overlay.hidden {
+    display: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .top-ui {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .health-bar, .xp-bar {
+        width: 150px;
+        height: 20px;
+    }
+    
+    .controls-hint {
+        display: none;
+    }
+}
+
+/* --- Responsive & Mobile --- */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+    .top-ui {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .health-bar, .xp-bar {
+        width: 150px;
+        height: 20px;
+    }
+    
+    .controls-hint {
+        display: none;
+    }
+
+    /* --- New Mobile Ability Button Layout --- */
+
+    .mobile-pause-btn {
+        display: none; /* Hidden by default */
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 15;
+        pointer-events: auto;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 0 12px;
+    }
+
+    .mobile-pause-btn span {
+        display: block;
+        width: 4px;
+        height: 50%;
+        background: white;
+        border-radius: 2px;
+    }
+
+    body.is-mobile .mobile-pause-btn {
+        display: flex;
+    }
+
+    body.is-mobile .bottom-left-ui,
+    body.is-mobile .bottom-center-ui,
+    body.is-mobile .bottom-right-ui {
+        left: auto; /* Unset left positioning */
+        transform: none; /* Unset transform */
+        gap: 15px;
+        align-items: flex-end;
+        pointer-events: auto;
+    }
+
+    /* Dash is the primary ability, moved up from the corner */
+    body.is-mobile .bottom-center-ui {
+        right: 20px;
+        bottom: 90px; /* Moved up from 20px to make space for pause */
+        flex-direction: row-reverse; /* Puts Dash icon on the far right of its group */
+    }
+
+    /* Grenades/Time Stop are stacked vertically above Dash */
+    body.is-mobile .bottom-left-ui {
+        right: 20px;
+        bottom: 180px; /* Moved up from 110px */
+        flex-direction: column-reverse;
+    }
+    
+    /* Shield and other passives go to the left of Dash */
+    body.is-mobile .bottom-right-ui {
+        right: 110px;
+        bottom: 90px; /* Moved up from 20px */
+        flex-direction: column-reverse;
+    }
+
+    body.is-mobile .grenade-ui {
+        flex-direction: row-reverse;
+        pointer-events: auto;
+    }
+
+    body.is-mobile .grenade-icon {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+
+    body.is-mobile .ability-key {
+        display: none;
+    }
+
+    /* Make icons bigger for touch */
+    body.is-mobile .ability-icon,
+    body.is-mobile .grenade-icon {
+        width: 70px;
+        height: 70px;
+    }
+}

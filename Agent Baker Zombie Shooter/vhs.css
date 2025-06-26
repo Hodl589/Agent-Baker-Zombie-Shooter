@@ -1,0 +1,116 @@
+body.vhs-mode .ui-overlay {
+    font-family: 'VHSGothic', sans-serif;
+    text-transform: uppercase;
+}
+
+body.vhs-mode .health-text,
+body.vhs-mode .xp-text,
+body.vhs-mode .stats,
+body.vhs-mode .powerup-selection h2,
+body.vhs-mode .powerup-btn h3,
+body.vhs-mode .powerup-btn p,
+body.vhs-mode .pause-menu h2,
+body.vhs-mode .death-screen h2,
+body.vhs-mode .death-screen p,
+body.vhs-mode .menu-btn,
+body.vhs-mode .controls-hint,
+body.vhs-mode .shop-selection h2,
+body.vhs-mode .shop-btn h3,
+body.vhs-mode .shop-btn p,
+body.vhs-mode .shop-cost,
+body.vhs-mode .ability-key,
+body.vhs-mode .upgrade-summary-panel h3,
+body.vhs-mode #upgradeSummaryList li .upgrade-name,
+body.vhs-mode #upgradeSummaryList li .upgrade-details {
+    font-family: 'VHSGothic', sans-serif;
+}
+
+/* --- VHS mode UI overrides for a blocky, retro feel --- */
+
+/* @tweakable border color for UI elements in VHS mode */
+.vhs-mode .powerup-btn:hover, .vhs-mode .menu-btn:hover {
+    border-color: #ffdd44;
+}
+
+/* @tweakable background color for hovered UI elements in VHS mode */
+.vhs-mode .powerup-btn:hover, .vhs-mode .menu-btn:hover, .vhs-mode .shop-btn:hover {
+    background: #4a4a4a;
+}
+
+.vhs-mode .shop-btn:hover {
+    /* @tweakable border color for shop buttons in VHS mode */
+    border-color: #44ffdd;
+}
+
+.vhs-mode .health-bar, .vhs-mode .xp-bar,
+.vhs-mode .powerup-selection, .vhs-mode .pause-menu, .vhs-mode .death-screen, .vhs-mode .shop-selection,
+.vhs-mode .powerup-btn, .vhs-mode .menu-btn, .vhs-mode .shop-btn,
+.vhs-mode .powerup-icon, .vhs-mode .shop-icon,
+.vhs-mode .upgrade-dot,
+.vhs-mode .checkmark,
+.vhs-mode .ability-key,
+.vhs-mode .upgrade-summary-panel,
+.vhs-mode #upgradeSummaryList li {
+    border-radius: 0;
+}
+
+.vhs-mode .ability-icon {
+    border-radius: 4px;
+}
+
+.vhs-mode .health-bar, .vhs-mode .xp-bar {
+    border-width: 2px;
+}
+
+.vhs-mode .health-fill, .vhs-mode .xp-fill {
+    background: revert; /* Removes linear-gradient */
+}
+.vhs-mode .health-fill {
+    background-color: #ff4444;
+}
+.vhs-mode .xp-fill {
+    background-color: #4444ff;
+}
+
+.vhs-mode .powerup-selection, .vhs-mode .pause-menu, .vhs-mode .death-screen, .vhs-mode .shop-selection {
+    border-width: 2px;
+}
+
+.vhs-mode .powerup-btn, .vhs-mode .menu-btn, .vhs-mode .shop-btn {
+    background: #3a3a3a;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.vhs-mode .powerup-icon, .vhs-mode .shop-icon {
+    background: #555;
+    box-shadow: none;
+}
+
+.vhs-mode .upgrade-dot {
+    width: 10px;
+    height: 10px;
+}
+
+.vhs-mode .upgrade-dot.filled {
+    box-shadow: none;
+}
+
+.vhs-mode .slider-container input[type="range"] {
+    border-radius: 0;
+    background: #3a3a3a;
+}
+.vhs-mode .slider-container input[type="range"]::-webkit-slider-thumb {
+    border-radius: 0;
+    border: none;
+    width: 16px;
+    height: 24px;
+    background: #ffdd44;
+}
+.vhs-mode .slider-container input[type="range"]::-moz-range-thumb {
+    border-radius: 0;
+    border: none;
+    width: 16px;
+    height: 24px;
+    background: #ffdd44;
+}

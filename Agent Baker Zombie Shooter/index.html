@@ -1,0 +1,246 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Survivors</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="main-ui.css">
+    <link rel="stylesheet" href="popups.css">
+    <link rel="stylesheet" href="panels.css">
+    <link rel="stylesheet" href="vhs.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div class="ui-overlay">
+            <div class="top-ui">
+                <div class="health-bar">
+                    <div class="health-fill"></div>
+                    <span class="health-text">100/100</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-fill"></div>
+                    <span class="xp-text">Level 1</span>
+                </div>
+                <div class="stats">
+                    <div>Score: <span id="score">0</span></div>
+                    <div>Wave: <span id="wave">1</span></div>
+                </div>
+            </div>
+            <div class="powerup-selection hidden" id="powerupSelection">
+                <h2>Choose a Power-up!</h2>
+                <div class="powerup-options">
+                    <button class="powerup-btn" data-powerup="0">
+                        <div class="powerup-icon" id="powerup0Icon"></div>
+                        <h3 id="powerup0Title"></h3>
+                        <p id="powerup0Desc"></p>
+                        <div class="upgrade-dots" id="powerup0Dots"></div>
+                    </button>
+                    <button class="powerup-btn" data-powerup="1">
+                        <div class="powerup-icon" id="powerup1Icon"></div>
+                        <h3 id="powerup1Title"></h3>
+                        <p id="powerup1Desc"></p>
+                        <div class="upgrade-dots" id="powerup1Dots"></div>
+                    </button>
+                    <button class="powerup-btn" data-powerup="2">
+                        <div class="powerup-icon" id="powerup2Icon"></div>
+                        <h3 id="powerup2Title"></h3>
+                        <p id="powerup2Desc"></p>
+                        <div class="upgrade-dots" id="powerup2Dots"></div>
+                    </button>
+                </div>
+                <button class="menu-btn" id="skipPowerupBtn">Skip</button>
+            </div>
+            <div class="powerup-selection boss-reward-selection hidden" id="bossRewardSelection">
+                <h2>Choose Your Rewards!</h2>
+                <p class="boss-reward-subtitle" id="bossRewardSubtitle">Pick 2 rewards</p>
+                <div class="powerup-options">
+                    <button class="powerup-btn" data-reward="0">
+                        <div class="powerup-icon" id="bossReward0Icon"></div>
+                        <h3 id="bossReward0Title"></h3>
+                        <p id="bossReward0Desc"></p>
+                    </button>
+                    <button class="powerup-btn" data-reward="1">
+                        <div class="powerup-icon" id="bossReward1Icon"></div>
+                        <h3 id="bossReward1Title"></h3>
+                        <p id="bossReward1Desc"></p>
+                    </button>
+                    <button class="powerup-btn" data-reward="2">
+                        <div class="powerup-icon" id="bossReward2Icon"></div>
+                        <h3 id="bossReward2Title"></h3>
+                        <p id="bossReward2Desc"></p>
+                    </button>
+                    <button class="powerup-btn" data-reward="3">
+                        <div class="powerup-icon" id="bossReward3Icon"></div>
+                        <h3 id="bossReward3Title"></h3>
+                        <p id="bossReward3Desc"></p>
+                    </button>
+                    <button class="powerup-btn" data-reward="4">
+                        <div class="powerup-icon" id="bossReward4Icon"></div>
+                        <h3 id="bossReward4Title"></h3>
+                        <p id="bossReward4Desc"></p>
+                    </button>
+                    <button class="powerup-btn" data-reward="5">
+                        <div class="powerup-icon" id="bossReward5Icon"></div>
+                        <h3 id="bossReward5Title"></h3>
+                        <p id="bossReward5Desc"></p>
+                    </button>
+                </div>
+                <button class="menu-btn" id="skipBossRewardBtn">Continue</button>
+            </div>
+            <div class="bottom-left-ui">
+                <div class="grenade-ui" id="grenadeContainer">
+                    <div class="grenade-icon available" id="grenade0"></div>
+                    <div class="grenade-icon available" id="grenade1"></div>
+                    <div class="grenade-icon available" id="grenade2"></div>
+                </div>
+                <div class="ability-display hidden" id="timeStopContainer">
+                    <div class="ability-icon" id="timeStopIcon">
+                        <div class="cooldown-fill" id="timeStopCooldownFill"></div>
+                    </div>
+                    <span class="ability-key">R</span>
+                </div>
+            </div>
+            <div class="bottom-center-ui">
+                <div class="ability-display hidden" id="finalStandContainer">
+                    <div class="ability-icon" id="finalStandIcon">
+                        <div class="cooldown-fill" id="finalStandCooldownFill"></div>
+                    </div>
+                    <span class="ability-key">Passive</span>
+                </div>
+                <div class="ability-display hidden" id="dashContainer">
+                    <div class="ability-icon" id="dashIcon">
+                        <div class="cooldown-fill" id="dashCooldownFill"></div>
+                    </div>
+                    <span class="ability-key">SPACE</span>
+                </div>
+                <div class="ability-display hidden" id="bulletTimeContainer">
+                    <div class="ability-icon" id="bulletTimeIcon">
+                        <div class="cooldown-fill" id="bulletTimeCooldownFill"></div>
+                    </div>
+                    <span class="ability-key">Auto</span>
+                </div>
+            </div>
+            <div class="bottom-right-ui">
+                <div class="ability-display hidden" id="shieldContainer">
+                    <div class="ability-icon" id="shieldIcon">
+                        <div class="cooldown-fill" id="shieldCooldownFill"></div>
+                        <span class="shield-count" id="shieldCount">0</span>
+                    </div>
+                    <span class="ability-key">Passive</span>
+                </div>
+            </div>
+            <div class="pause-menu hidden" id="pauseMenu">
+                <h2>Game Paused</h2>
+                <div class="pause-options">
+                    <label class="slider-container">
+                        Camera Zoom
+                        <input type="range" id="zoomSlider" min="0.5" max="2.0" step="0.1" value="1.0">
+                        <span id="zoomValue">1.0x</span>
+                    </label>
+                    <label class="checkbox-container">
+                        VHS Filter
+                        <input type="checkbox" id="vhsFilterCheckbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        Bloom
+                        <input type="checkbox" id="bloomCheckbox" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        Auto-Dodge Effect
+                        <input type="checkbox" id="bulletTimeCheckbox" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        Show Hitbox Info
+                        <input type="checkbox" id="showHitboxesCheckbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">
+                        Debug Info
+                        <input type="checkbox" id="debugInfoCheckbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <button class="menu-btn" id="resumeBtn">Resume</button>
+                <button class="menu-btn" id="restartBtn">Restart</button>
+            </div>
+            <div class="upgrade-summary-panel hidden" id="upgradeSummaryPanel">
+                <h3>UPGRADES</h3>
+                <ul id="upgradeSummaryList"></ul>
+            </div>
+            <div class="death-screen hidden" id="deathScreen">
+                <h2>You Died!</h2>
+                <p>Final Score: <span id="finalScore">0</span></p>
+                <p>Level Reached: <span id="finalLevel">1</span></p>
+                <p class="death-tip" id="deathTip"></p>
+                <button class="menu-btn" id="playAgainBtn">Play Again</button>
+            </div>
+            <div class="controls-hint">
+                <p>WASD to move • ESC to pause</p>
+            </div>
+            <!-- Performance Debug Overlay: Added a new element to display FPS and memory stats. It's toggled via the checkbox in the pause menu. -->
+            <div class="debug-overlay hidden" id="debugOverlay">
+                <div>FPS: <span id="fpsCounter">0</span></div>
+                <div>Mem: <span id="memCounter">0</span> MB</div>
+            </div>
+            <div class="shop-selection hidden" id="shopSelection">
+                <h2>Shop - Spend Your Score!</h2>
+                <div class="shop-options">
+                    <button class="shop-btn" data-shop="0">
+                        <div class="shop-icon" id="shop0Icon"></div>
+                        <h3 id="shop0Title"></h3>
+                        <p id="shop0Desc"></p>
+                        <span class="shop-cost" id="shop0Cost"></span>
+                    </button>
+                    <button class="shop-btn" data-shop="1">
+                        <div class="shop-icon" id="shop1Icon"></div>
+                        <h3 id="shop1Title"></h3>
+                        <p id="shop1Desc"></p>
+                        <span class="shop-cost" id="shop1Cost"></span>
+                    </button>
+                    <button class="shop-btn" data-shop="2">
+                        <div class="shop-icon" id="shop2Icon"></div>
+                        <h3 id="shop2Title"></h3>
+                        <p id="shop2Desc"></p>
+                        <span class="shop-cost" id="shop2Cost"></span>
+                    </button>
+                    <button class="shop-btn" data-shop="3">
+                        <div class="shop-icon" id="shop3Icon"></div>
+                        <h3 id="shop3Title"></h3>
+                        <p id="shop3Desc"></p>
+                        <span class="shop-cost" id="shop3Cost"></span>
+                    </button>
+                    <button class="shop-btn" data-shop="4">
+                        <div class="shop-icon" id="shop4Icon"></div>
+                        <h3 id="shop4Title"></h3>
+                        <p id="shop4Desc"></p>
+                        <span class="shop-cost" id="shop4Cost"></span>
+                    </button>
+                    <button class="shop-btn" data-shop="5">
+                        <div class="shop-icon" id="shop5Icon"></div>
+                        <h3 id="shop5Title"></h3>
+                        <p id="shop5Desc"></p>
+                        <span class="shop-cost" id="shop5Cost"></span>
+                    </button>
+                </div>
+                <button class="menu-btn" id="shopCloseBtn">Continue</button>
+            </div>
+            <div class="mobile-pause-btn" id="mobilePauseBtn">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <script type="importmap">
+    {
+        "imports": {
+            "nipplejs": "https://esm.sh/nipplejs@0.10.1"
+        }
+    }
+    </script>
+    <script type="module" src="game.js"></script>
+</body>
+</html>

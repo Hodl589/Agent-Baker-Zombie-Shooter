@@ -1,0 +1,378 @@
+/* --- Common Popup Styles --- */
+.powerup-selection, .pause-menu, .death-screen, .shop-selection {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.95);
+    border: 3px solid #666;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    pointer-events: auto;
+    z-index: 20;
+}
+
+.powerup-selection.hidden, .pause-menu.hidden, .death-screen.hidden, .shop-selection.hidden {
+    display: none;
+}
+
+.powerup-selection h2, .pause-menu h2, .death-screen h2, .shop-selection h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.powerup-selection h2, .powerup-btn h3, .pause-menu h2, .death-screen h2 {
+    color: #ffdd44;
+}
+
+.shop-selection h2 {
+    color: #44ffdd;
+}
+
+.menu-btn {
+    background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+    border: 2px solid #666;
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+    border-color: #ffdd44;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 221, 68, 0.3);
+}
+
+.powerup-selection .menu-btn {
+    margin-top: 20px;
+}
+
+/* --- Powerup/Reward Selection --- */
+.powerup-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.powerup-btn {
+    background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+    border: 2px solid #666;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 180px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.powerup-btn:hover {
+    border-color: #ffdd44;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 221, 68, 0.3);
+}
+
+.powerup-btn h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.powerup-btn p {
+    font-size: 12px;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+.powerup-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(145deg, #555, #333);
+    border: 2px solid #888;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.1), inset 0 -2px 0 rgba(0,0,0,0.3);
+}
+
+.upgrade-dots {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.upgrade-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+    border: 1px solid #888;
+}
+
+.upgrade-dot.filled {
+    background: #ffdd44;
+    box-shadow: 0 0 4px rgba(255, 221, 68, 0.5);
+}
+
+.boss-reward-subtitle {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #ccc;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Highlight selected boss reward buttons */
+#bossRewardSelection .powerup-btn.selected {
+    border-color: #44ff88;
+    box-shadow: 0 0 15px rgba(68, 255, 136, 0.5);
+}
+
+/* --- Pause Menu --- */
+.pause-menu {
+    min-width: 300px;
+}
+
+.pause-options {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 250px;
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.slider-container input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 150px;
+    height: 8px;
+    background: #555;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #777;
+    transition: background 0.2s ease;
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #44ff88;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.slider-container input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #44ff88;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+#zoomValue {
+    font-size: 14px;
+    min-width: 40px;
+    text-align: right;
+    color: #ccc;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #333;
+    border: 2px solid #666;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #444;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #44ff88;
+    border-color: #66ffaa;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* --- Death Screen --- */
+.death-screen {
+    min-width: 300px;
+}
+
+.death-screen h2 {
+    font-size: 28px;
+}
+
+.death-screen p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ccc;
+}
+
+.death-tip {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #aaa;
+    font-size: 14px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+/* --- Shop --- */
+.shop-selection {
+    min-width: 320px;
+    /* @tweakable The maximum width of the shop panel on desktop. */
+    max-width: 700px;
+    width: 95vw;
+    /* @tweakable The maximum height of the shop panel. It will scroll if content overflows. */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.shop-options {
+    display: grid;
+    /* @tweakable The minimum width of a shop item. The grid will auto-fit columns based on this. */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    justify-items: center;
+    margin-bottom: 20px;
+}
+
+.shop-btn {
+    background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
+    border: 2px solid #666;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shop-btn:hover {
+    border-color: #44ffdd;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(68,255,221,0.3);
+}
+
+.shop-btn.bought {
+    filter: grayscale(1);
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.shop-btn.bought:hover {
+    border-color: #666;
+    transform: none;
+    box-shadow: none;
+}
+
+.shop-icon {
+    width: 60px;
+    height: 60px;
+    background: #555;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.shop-cost {
+    margin-top: auto;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .powerup-selection, .shop-selection {
+        min-width: 90vw;
+        padding: 20px;
+    }
+    
+    .powerup-options {
+        flex-direction: column;
+    }
+}
