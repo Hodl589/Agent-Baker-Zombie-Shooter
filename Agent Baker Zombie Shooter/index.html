@@ -22,7 +22,8 @@
                     <div class="xp-fill"></div>
                     <span class="xp-text">Level 1</span>
                 </div>
-                <div class="stats">
+                <div class="character-info"><span id="charName"></span> - <span id="primaryName"></span> / <span id="secondaryName"></span></div>
+            <div class="stats">
                     <div>Score: <span id="score">0</span></div>
                     <div>Wave: <span id="wave">1</span></div>
                 </div>
@@ -178,6 +179,22 @@
                 <p class="death-tip" id="deathTip"></p>
                 <button class="menu-btn" id="playAgainBtn">Play Again</button>
             </div>
+            <div class="character-selection" id="characterSelection">
+                <h2>Select Your Character</h2>
+                <div class="character-options" id="characterOptions"></div>
+            </div>
+            <div class="loadout-selection hidden" id="loadoutSelection">
+                <h2>Select Your Loadout</h2>
+                <div class="loadout-group">
+                    <h3>Primary Weapon</h3>
+                    <div class="weapon-options" id="primaryOptions"></div>
+                </div>
+                <div class="loadout-group">
+                    <h3>Secondary Weapon</h3>
+                    <div class="weapon-options" id="secondaryOptions"></div>
+                </div>
+                <button class="menu-btn" id="startGameBtn">Start Game</button>
+            </div>
             <div class="controls-hint">
                 <p>WASD to move • ESC to pause</p>
             </div>
@@ -241,6 +258,6 @@
         }
     }
     </script>
-    <script type="module" src="game.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>

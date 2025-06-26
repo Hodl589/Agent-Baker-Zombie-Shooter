@@ -1,5 +1,5 @@
 /* --- Common Popup Styles --- */
-.powerup-selection, .pause-menu, .death-screen, .shop-selection {
+{".powerup-selection, .pause-menu, .death-screen, .shop-selection, .character-selection, .loadout-selection"} {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -13,11 +13,11 @@
     z-index: 20;
 }
 
-.powerup-selection.hidden, .pause-menu.hidden, .death-screen.hidden, .shop-selection.hidden {
+{".powerup-selection.hidden, .pause-menu.hidden, .death-screen.hidden, .shop-selection.hidden, .character-selection.hidden, .loadout-selection.hidden"} {
     display: none;
 }
 
-.powerup-selection h2, .pause-menu h2, .death-screen h2, .shop-selection h2 {
+{".powerup-selection h2, .pause-menu h2, .death-screen h2, .shop-selection h2, .character-selection h2, .loadout-selection h2"} {
     margin-bottom: 20px;
     font-size: 24px;
 }
@@ -58,6 +58,15 @@
     gap: 20px;
     justify-content: center;
 }
+.character-options, .weapon-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.loadout-group {
+    margin-bottom: 20px;
+}
+
 
 .powerup-btn {
     background: linear-gradient(145deg, #4a4a4a, #3a3a3a);
@@ -135,6 +144,10 @@
 }
 
 /* Highlight selected boss reward buttons */
+.powerup-btn.selected {
+    border-color: #44ff88;
+    box-shadow: 0 0 15px rgba(68, 255, 136, 0.5);
+}
 #bossRewardSelection .powerup-btn.selected {
     border-color: #44ff88;
     box-shadow: 0 0 15px rgba(68, 255, 136, 0.5);
