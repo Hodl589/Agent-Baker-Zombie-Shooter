@@ -18,9 +18,12 @@ import * as playerCombat from './player/playerCombat.js';
 const RESET_SHOOT_COOLDOWN_ON_RESUME = true;
 
 class Game {
-    constructor() {
+    constructor(options = {}) {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
+        this.selectedCharacter = options.character;
+        this.primaryWeapon = options.primaryWeapon;
+        this.secondaryWeapon = options.secondaryWeapon;
         
         this.preloadAssets();
         
@@ -64,13 +67,9 @@ class Game {
         this.resizeCanvas();
         
         // Game and Player Data
-        this.initGameData();
-        this.gameFlowManager = new GameFlowManager(this);
-        
         // Event Listeners
         this.setupGlobalEventListeners();
         
-        this.start();
     }
 
     preloadAssets() {
@@ -159,9 +158,13 @@ class Game {
     }
     
     initGameData() {
-        this.player = new Player(this.canvas.width / 2, this.canvas.height / 2);
+        const cfg = Object.assign({}, this.selectedCharacter, { primaryWeapon: this.primaryWeapon, secondaryWeapon: this.secondaryWeapon });
+        this.player = new Player(this.canvas.width / 2, this.canvas.height / 2, cfg);
         this.shopSystem = new ShopSystem(this.gameState, this.player, (name) => this.audioManager.play(name), this.powerupSystem);
         this.renderer.userZoom = 1.0;
+        this.gameState.selectedCharacter = this.selectedCharacter;
+        this.gameState.primaryWeapon = this.primaryWeapon;
+        this.gameState.secondaryWeapon = this.secondaryWeapon;
     }
     
     resizeCanvas() {
@@ -195,6 +198,7 @@ class Game {
         }
     }
     
+    
     restart() {
         this.audioManager.stopMusic();
         this.gameState.reset();
@@ -204,20 +208,21 @@ class Game {
         this.initGameData();
         this.renderer.sceneDrawer.reset();
 
-        // Reset zoom slider UI
-        const zoomSlider = document.getElementById('zoomSlider');
-        const zoomValue = document.getElementById('zoomValue');
+        const zoomSlider = document.getElementById("zoomSlider");
+        const zoomValue = document.getElementById("zoomValue");
         if (zoomSlider && zoomValue) {
             zoomSlider.value = 1.0;
-            zoomValue.textContent = '1.0x';
+            zoomValue.textContent = "1.0x";
         }
 
         this.gameFlowManager = new GameFlowManager(this);
-        this.gameState.isPaused = false; // Ensure game is not paused on restart
+        this.gameState.isPaused = false;
     }
-    
+
     start() {
         this.gameState.gameRunning = true;
+        this.initGameData();
+        this.gameFlowManager = new GameFlowManager(this);
         this.gameState.lastTime = performance.now();
         
         // Start paused
@@ -447,5 +452,3 @@ class Game {
     }
 }
 
-// Start the game
-new Game();

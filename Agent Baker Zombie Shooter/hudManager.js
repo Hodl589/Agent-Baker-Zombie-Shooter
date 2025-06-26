@@ -24,6 +24,9 @@ export class HudManager {
             finalStandContainer: document.getElementById('finalStandContainer'),
             finalStandIcon: document.getElementById('finalStandIcon'),
             finalStandCooldownFill: document.getElementById('finalStandCooldownFill'),
+            charName: document.getElementById("charName"),
+            primaryName: document.getElementById("primaryName"),
+            secondaryName: document.getElementById("secondaryName"),
         };
     }
 
@@ -43,6 +46,12 @@ export class HudManager {
         this.elements.score.textContent = score;
         this.elements.wave.textContent = wave;
     }
+    setCharacterInfo(name, primary, secondary) {
+        this.elements.charName.textContent = name;
+        this.elements.primaryName.textContent = primary;
+        this.elements.secondaryName.textContent = secondary;
+    }
+
 
     updateGrenadeUI(current, max) {
         const container = this.elements.grenadeContainer;

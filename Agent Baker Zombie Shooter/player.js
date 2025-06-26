@@ -10,33 +10,39 @@ const PLAYER_BULLET_TIME_SPEED_MULTIPLIER = 3;
 const SHOOT_RANGE_GRENADE_RANGE_RATIO = 0.5;
 
 export class Player {
-    constructor(x, y) {
+    constructor(x, y, config = {}) {
         this.x = x;
         this.y = y;
         /* @tweakable player size */
         this.size = 15;
         /* @tweakable player movement speed */
-        this.speed = 200;
+        this.speed = config.speed || 200;
         
-        this.health = 100;
-        this.maxHealth = 100;
+        this.health = config.maxHealth || 100;
+        this.maxHealth = config.maxHealth || 100;
         this.level = 1;
         this.xp = 0;
         /* @tweakable The base amount of XP required to reach level 2. */
         this.xpRequired = 100;
         
         /* @tweakable Player base shooting cooldown in seconds. */
-        this.shootCooldown = 0.5;
-        this.lastShotTimestamp = 0; // Use a timestamp for cooldowns to be immune to pausing.
+        this.shootCooldown = config.shootCooldown || 0.5;
+        this.lastShotTimestamp = 0;
+        this.reloadTime = config.reloadTime || 1.0;
+        this.reloadTimer = 0;
 
-        /* @tweakable bullet damage */
-        this.bulletDamage = 30;
-        /* @tweakable base damage for spikes */
-        this.spikeDamage = 40;
-        /* @tweakable number of bullets per shot */
-        this.bulletCount = 1;
-        /* @tweakable bullet spread of bullets in radians for multi-shot. Higher is less accurate. A smaller value makes shots more focused by default. */
-        this.bulletSpread = 0.4;
+        if (config.primaryWeapon) {
+            const ws = config.primaryWeapon.stats;
+            this.bulletDamage = ws.damage;
+            this.shootCooldown = ws.fireRate;
+            this.bulletCount = ws.bulletCount;
+            this.bulletSpread = ws.spread;
+            this.shootRange = ws.range * SHOOT_RANGE_GRENADE_RANGE_RATIO;
+        } else {
+            this.bulletDamage = 30;
+            this.bulletCount = 1;
+        }
+        this.bulletSpread = config.bulletSpread !== undefined ? config.bulletSpread : this.bulletSpread;
         /* @tweakable XP magnet range */
         this.xpMagnetRange = 50;
         /** 
@@ -45,7 +51,7 @@ export class Player {
          * This value is derived from grenadeRange and SHOOT_RANGE_GRENADE_RANGE_RATIO.
          */
         /* @tweakable The player's grenade throw range. The shooting range is calculated from this value. */
-        this.grenadeRange = 250;
+        this.grenadeRange = config.primaryWeapon ? config.primaryWeapon.stats.range : 250;
         this.shootRange = this.grenadeRange * SHOOT_RANGE_GRENADE_RANGE_RATIO;
         /* @tweakable base damage for grenades */
         this.grenadeDamage = 100;
@@ -128,6 +134,9 @@ export class Player {
         /* @tweakable damage dealt by dashing through enemies with Slash Dash upgrade */
         this.slashDashDamage = 100;
         this.magnetTimer = 0;
+        this.primaryWeapon = config.primaryWeapon;
+        this.secondaryWeapon = config.secondaryWeapon;
+        this.characterName = config.name || "";
     }
     
     update(deltaTime, gameState, canvasWidth, canvasHeight, worldSize, isMobile) {
