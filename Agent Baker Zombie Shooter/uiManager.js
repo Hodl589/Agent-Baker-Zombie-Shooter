@@ -20,6 +20,10 @@ export class UIManager {
         this.hudManager.updateHealth(current, max);
     }
 
+    setCharacterInfo(name, primary, secondary) {
+        this.hudManager.setCharacterInfo(name, primary, secondary);
+    }
+
     updateXP(xp, xpRequired, level) {
         this.hudManager.updateXP(xp, xpRequired, level);
     }

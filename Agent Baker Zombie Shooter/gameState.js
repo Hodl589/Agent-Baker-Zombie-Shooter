@@ -17,6 +17,9 @@ export class GameState {
         /* @tweakable boss arena padding for boundaries during boss fights */
         this.bossArenaPadding = 100;
         
+        this.selectedCharacter = null;
+        this.primaryWeapon = null;
+        this.secondaryWeapon = null;
         this.gameRunning = false;
         this.isPaused = false;
         this.isGameOver = false;
